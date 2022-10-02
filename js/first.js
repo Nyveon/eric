@@ -5,6 +5,12 @@
 
 /* ---- Stars ---- */
 
+// Parameters
+const star_canvas_sizes = [0.9, 0.8, 0.7, 0.6, 0.5];
+const star_canvas_parallax = [0.05, 0.01, 0.001];
+const star_outer_margin = 120;
+const star_count = 200; // (Per layer)
+
 /**
  * Struct for a star
  */
@@ -69,16 +75,47 @@ const starField = {
  * Generate and draws a static star field
  */
 function loadStars() {
-    const stars_canvas = document.getElementById("stars-1");
-    stars_canvas.width = window.innerWidth * 2;
-    stars_canvas.height = window.innerHeight * 2;
-    const sf = starField.create(1000, 1, "white");
-    sf.generate(stars_canvas);
+    const stars_canvases = document.getElementsByClassName("stars");
+    for (let i = 0; i < stars_canvases.length; i++) {
+        const canvas = stars_canvases[i];
+
+        canvas.width = window.innerWidth + star_outer_margin;
+        canvas.height = window.innerHeight + star_outer_margin;
+
+        const starField1 = starField.create(star_count, star_canvas_sizes[i], "#ffffff");
+        starField1.generate(canvas);
+    }
 }
+
+/**
+ * Parallax effect for the stars relative to mouse
+ * One day this should be relative to scroll as well
+ */
+ document.addEventListener("mousemove", function(event) {
+    const _w = window.innerWidth / 2;
+    const _h = window.innerHeight / 2;
+    const _mouseX = event.clientX;
+    const _mouseY = event.clientY;
+    const _x = _mouseX - _w;
+    const _y = _mouseY - _h;
+
+    const stars_canvases = document.getElementsByClassName("stars");
+    for (let i = 0; i < stars_canvases.length; i++) {
+        const canvas = stars_canvases[i];
+
+        const _depth = star_canvas_parallax[i];
+        const _x2 = _x * _depth;
+        const _y2 = _y * _depth;
+
+        canvas.style.left = _x2 + "px";
+        canvas.style.top = _y2 + "px";
+    }
+ });
+
 
 /* ---- o ---- */
 
-document.addEventListener("DOMContentLoaded", function(_event) { 
+document.addEventListener("DOMContentLoaded", function(_event) {
 
     function resizeCanvas() {
         loadStars();
