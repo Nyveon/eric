@@ -3,6 +3,28 @@
 /*jshint esversion: 6 */
 /* jshint browser: true */
 
+var hasTouchScreen = false;
+
+if ("maxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.maxTouchPoints > 0;
+} else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0;
+} else {
+    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+    if (mQ && mQ.media === "(pointer:coarse)") {
+        hasTouchScreen = !!mQ.matches;
+    } else if ('orientation' in window) {
+        hasTouchScreen = true; // deprecated, but good fallback
+    } else {
+        // Only as a last resort, fall back to user agent sniffing
+        var UA = navigator.userAgent;
+        hasTouchScreen = (
+            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+        );
+    }
+}
+
 /* ---- Stars ---- */
 
 // Parameters
@@ -93,13 +115,11 @@ function loadStars() {
  * Parallax effect for the stars relative to mouse
  * One day this should be relative to scroll as well
  */
- document.addEventListener("mousemove", function(event) {
+function parallaxStars(x, y) {
     const _w = window.innerWidth / 2;
     const _h = window.innerHeight / 2;
-    const _mouseX = event.clientX;
-    const _mouseY = event.clientY;
-    const _x = _mouseX - _w;
-    const _y = _mouseY - _h;
+    const _x = x - _w;
+    const _y = y - _h;
 
     const stars_canvases = document.getElementsByClassName("stars");
     for (let i = 0; i < stars_canvases.length; i++) {
@@ -112,7 +132,16 @@ function loadStars() {
         canvas.style.left = _x2 + "px";
         canvas.style.top = _y2 + "px";
     }
- });
+}
+
+function parallaxMouse(event) {
+    parallaxStars(event, event.clientX, event.clientY);
+}
+
+// Parallax if desktop, animation if mobile
+if (!hasTouchScreen) {
+    document.addEventListener("mousemove", parallaxMouse);
+}
 
 
 /**
