@@ -6,10 +6,12 @@
 /* ---- Stars ---- */
 
 // Parameters
-const star_canvas_sizes = [0.9, 0.8, 0.7, 0.6, 0.5];
-const star_canvas_parallax = [0.05, 0.01, 0.001];
-const star_outer_margin = 120;
-const star_count = 200; // (Per layer)
+const star_layers = 10;
+const star_canvas_sizes = [0.9, 0.8, 0.7, 0.6, 0.5, 0.5, 0.5, 0.4, 0.4, 0.3];
+const star_canvas_parallax = [0.05, 0.045, 0.04, 0.035, 0.03, 0.025, 0.02, 0.015, 0.01, 0.005];
+const star_outer_margin = 200;
+const star_density = 0.0006 / star_layers; // (Per pixel)
+const star_color = '#c2fff8';
 
 /**
  * Struct for a star
@@ -81,9 +83,9 @@ function loadStars() {
 
         canvas.width = window.innerWidth + star_outer_margin;
         canvas.height = window.innerHeight + star_outer_margin;
+        const starCount = canvas.width * canvas.height * star_density;
 
-        const starField1 = starField.create(star_count, star_canvas_sizes[i], "#ffffff");
-        starField1.generate(canvas);
+        starField.create(starCount, star_canvas_sizes[i], "#ffffff").generate(canvas);
     }
 }
 
@@ -113,9 +115,22 @@ function loadStars() {
  });
 
 
+/**
+ * Make star layers
+ */
+function makeStars() {
+    const container = document.getElementById("stars-canvas");
+    for (let i = 0; i < star_layers; i++) {
+        const canvas = document.createElement("canvas");
+        canvas.className = "stars";
+        container.appendChild(canvas);
+    }
+}
+
 /* ---- o ---- */
 
 document.addEventListener("DOMContentLoaded", function(_event) {
+    makeStars();
 
     function resizeCanvas() {
         loadStars();
