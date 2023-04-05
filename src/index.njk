@@ -1,0 +1,28 @@
+---
+layout: base.njk
+name: "home"
+---
+
+<div id="background">
+	<div id="blob"></div>
+	<div id="blur"></div>
+	<div id="noise">
+		{% for i in range(8) %}
+		<div></div>
+		{% endfor %}
+	</div>
+</div>
+
+<div id="nameplate">
+	<div id="nametag" data-first="Eric K" data-second="Nyveon">Eric K</div>
+	<div id="links">
+		<a href="https://github.com/nyveon" target="_blank"
+			><img src="/img/github.svg" />@Nyveon</a
+		>
+		<a href="mailto:work@eri.cl" target="_blank"
+			><img src="/img/contact.svg" />work@eri.cl</a
+		>
+	</div>
+</div>
+
+<script src="js/index.js"></script>

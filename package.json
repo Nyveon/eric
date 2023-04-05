@@ -1,0 +1,24 @@
+{
+    "name": "ericl",
+    "version": "1.0.0",
+    "description": "My personal portfolio page: eri.cl",
+    "main": "index.js",
+    "scripts": {
+        "start": "eleventy --serve",
+        "build": "eleventy"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Nyveon/ericl.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Nyveon/ericl/issues"
+    },
+    "homepage": "https://github.com/Nyveon/ericl#readme",
+    "devDependencies": {
+        "@11ty/eleventy": "^2.0.1"
+    }
+}

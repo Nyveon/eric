@@ -1,0 +1,9 @@
+@use "sass:color";
+
+$color-background: #edcfff;
+
+$color-blob-1: #35008a;
+$color-blob-2: #ff00ae;
+$color-blob-fallback: color.mix($color-blob-1, $color-blob-2, 50%);
+
+$color-nameplate: color.adjust($color-blob-1, $lightness: -7%);
