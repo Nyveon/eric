@@ -1,19 +1,14 @@
 // 100vh fix for mobile devices
 const setHeight = () => {
-	document.getElementById("my-element").style.minHeight =
-		window.innerHeight + "px";
+	document.body.style.minHeight = window.innerHeight + "px";
 };
 
-let deviceWidth = window.matchMedia("(max-width: 1024px)");
-
-if (deviceWidth.matches) {
+if ((deviceWidth = window.matchMedia("(max-width: 1024px)").matches)) {
 	window.addEventListener("resize", setHeight);
 	setHeight();
 }
 
-// Blob animation
 const blob = document.getElementById("blob");
-
 window.onpointermove = (event) => {
 	const { clientX, clientY } = event;
 
@@ -22,6 +17,6 @@ window.onpointermove = (event) => {
 			left: `${clientX}px`,
 			top: `${clientY}px`,
 		},
-		{ duration: 3000, fill: "forwards" }
+		{ duration: 2000, fill: "forwards", easing: "ease-out" }
 	);
 };

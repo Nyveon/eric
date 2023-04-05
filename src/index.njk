@@ -3,13 +3,14 @@ layout: base.njk
 name: "home"
 ---
 
-<div id="blob"></div>
-<div id="blur"></div>
-
-<div id="backgrounds">
-	{% for i in range(8) %}
-	<div></div>
-	{% endfor %}
+<div id="background">
+	<div id="blob"></div>
+	<div id="blur"></div>
+	<div id="noise">
+		{% for i in range(8) %}
+		<div></div>
+		{% endfor %}
+	</div>
 </div>
 
 <script src="js/index.js"></script>
