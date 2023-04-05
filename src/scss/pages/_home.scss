@@ -2,19 +2,27 @@
 
 $noise-backgrounds: 8;
 
-body#home {
-	overflow: hidden;
+body {
 	background-color: $color-background;
+}
+
+body#home main {
+	@include flex(row, center, center);
+	overflow: hidden;
+
+	font-family: "Lato", sans-serif;
+	font-weight: 100;
+	color: #fff;
 
 	#background {
 		@include size(100%);
-		position: relative;
+		@include absolute();
 		overflow: hidden;
 
 		#blob {
 			@include absolute(50%, 50%, 50%, 50%);
 			@include size(40vmax);
-			z-index: 1;
+			z-index: -30;
 			translate: -50% -50%;
 			border-radius: 50%;
 
@@ -25,7 +33,7 @@ body#home {
 				$color-blob-2 50%,
 				$color-blob-1 100%
 			);
-			opacity: 0.4;
+			opacity: 0.5;
 
 			animation: rotate 10s linear infinite;
 
@@ -42,11 +50,18 @@ body#home {
 			}
 		}
 
+		#blur {
+			@include absolute();
+			@include size(100%);
+			z-index: -20;
+			backdrop-filter: blur(12vmax);
+		}
+
 		#noise {
 			@include size(100%);
 			position: relative;
 			overflow: hidden;
-			z-index: 3;
+			z-index: -10;
 
 			div {
 				@include absolute();
@@ -80,12 +95,27 @@ body#home {
 				}
 			}
 		}
+	}
 
-		#blur {
-			@include absolute();
-			@include size(100%);
-			z-index: 2;
-			backdrop-filter: blur(12vmax);
+	#nameplate {
+		@include flex(column, center, center);
+
+		:first-child {
+			font-size: 3rem;
+		}
+
+		&::before {
+			content: "";
+			@include size(16rem);
+			@include absolute(50%, 50%, 50%, 50%);
+			z-index: -1;
+			translate: -50% -50%;
+			border-radius: 1%;
+
+			background-color: $color-nameplate;
+			box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+				rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+				rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 		}
 	}
 }

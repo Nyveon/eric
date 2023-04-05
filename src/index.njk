@@ -3,14 +3,18 @@ layout: base.njk
 name: "home"
 ---
 
+<div id="nameplate">
+	<div>Eric K.</div>
+	<div>Under construction...</div>
+</div>
+
 <div id="background">
 	<div id="blob"></div>
 	<div id="blur"></div>
+	<script src="js/index.js"></script>
 	<div id="noise">
 		{% for i in range(8) %}
 		<div></div>
 		{% endfor %}
 	</div>
 </div>
-
-<script src="js/index.js"></script>
