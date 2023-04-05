@@ -22,30 +22,40 @@ window.onpointermove = (event) => {
 	);
 };
 
-// Nameplate effect
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+// Nametag effect
+const nameplate = document.getElementById("nameplate");
+const letters = "abcdefghijklmnopqrstuvwxyz";
 
 let interval = null;
 
-document.getElementById("nametag").onmouseover = (event) => {
+nameplate.onmouseenter = (event) => {
+	const targetElement = document.getElementById("nametag");
+
 	let iteration = 0;
 
 	clearInterval(interval);
 
 	let targetText =
-		event.target.innerText === event.target.dataset.first
-			? event.target.dataset.second
-			: event.target.dataset.first;
+		targetElement.innerText === targetElement.dataset.first
+			? targetElement.dataset.second
+			: targetElement.dataset.first;
 
 	interval = setInterval(() => {
-		event.target.innerText = event.target.innerText
+		targetElement.innerText = targetElement.innerText
 			.split("")
 			.map((letter, index) => {
 				if (index < iteration) {
 					return targetText[index];
 				}
 
-				return letters[Math.floor(Math.random() * 26 * 2)];
+				const returnLetter = letters[Math.floor(Math.random() * 26)];
+				if (
+					targetText[index] &&
+					targetText[index] == targetText[index].toUpperCase()
+				) {
+					return returnLetter.toUpperCase();
+				}
+				return returnLetter;
 			})
 			.join("");
 
@@ -54,5 +64,5 @@ document.getElementById("nametag").onmouseover = (event) => {
 		}
 
 		iteration += 1 / 3;
-	}, 30);
+	}, 35);
 };
