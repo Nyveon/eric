@@ -1,16 +1,15 @@
 ---
 layout: base.njk
-name: "index"
+name: "home"
 ---
 
-<div id="backgrounds">
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
+<div id="blob"></div>
+<div id="blur"></div>
 
+<div id="backgrounds">
+	{% for i in range(8) %}
 	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
+	{% endfor %}
 </div>
+
+<script src="js/index.js"></script>
