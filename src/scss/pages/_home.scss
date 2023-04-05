@@ -7,18 +7,70 @@ body {
 }
 
 body#home main {
-	@include flex(row, center, center);
 	overflow: hidden;
+
+	//height: 200vh;
 
 	font-family: "Lato", sans-serif;
 	font-weight: 100;
 	color: #fff;
 
+	#first-page {
+		@include flex(row, center, center);
+		width: 100%;
+		height: 100vh;
+
+		#nameplate {
+			@include flex(column, center, center);
+			@include size(16rem);
+
+			border-radius: 1%;
+
+			background-color: $color-nameplate;
+			box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+				rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+				rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+			> :first-child {
+				font-size: 3rem;
+				height: 50%;
+				display: flex;
+				align-items: flex-end;
+				padding-bottom: 0.8rem;
+			}
+
+			#links {
+				@include flex(column, center, center);
+				margin-top: 1rem;
+
+				a {
+					@include flex(row, center, center);
+					margin-bottom: 0.5rem;
+
+					img {
+						@include size(1.6rem);
+						margin-right: 0.5rem;
+						transition: transform 0.2s ease-in-out;
+					}
+
+					&:hover {
+						font-weight: 700;
+
+						img {
+							transform: scale(1.1);
+						}
+					}
+				}
+			}
+		}
+	}
+
 	#background {
 		@include size(100%);
-		@include absolute();
+		position: fixed;
 		overflow: hidden;
 		pointer-events: none;
+		z-index: -1;
 
 		#blob {
 			@include absolute(50%, 50%, 50%, 50%);
@@ -53,7 +105,7 @@ body#home main {
 
 		#blur {
 			@include absolute();
-			@include size(100%);
+			@include size(100vmax);
 			z-index: -20;
 			backdrop-filter: blur(12vmax);
 		}
@@ -92,50 +144,6 @@ body#home main {
 							background-position: (math.sin($i * $angle) * 100%)
 								(math.cos($i * $angle) * 100%);
 						}
-					}
-				}
-			}
-		}
-	}
-
-	#nameplate {
-		@include flex(column, center, center);
-		@include size(16rem);
-
-		border-radius: 1%;
-
-		background-color: $color-nameplate;
-		box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-			rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-			rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
-		> :first-child {
-			font-size: 3rem;
-			height: 50%;
-			display: flex;
-			align-items: flex-end;
-			padding-bottom: 0.8rem;
-		}
-
-		#links {
-			@include flex(column, center, center);
-			margin-top: 1rem;
-
-			a {
-				@include flex(row, center, center);
-				margin-bottom: 0.5rem;
-
-				img {
-					@include size(1.6rem);
-					margin-right: 0.5rem;
-					transition: transform 0.2s ease-in-out;
-				}
-
-				&:hover {
-					font-weight: 700;
-
-					img {
-						transform: scale(1.1);
 					}
 				}
 			}
