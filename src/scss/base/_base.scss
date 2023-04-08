@@ -14,7 +14,15 @@ main {
 }
 
 section {
-	height: 80vh;
+	@include flex(column, center, center);
+	height: 100vh;
+
+	h2 {
+		font-size: 2rem;
+		background-color: $color-background;
+		padding: 1rem;
+		border-radius: 15px;
+	}
 
 	&#tools {
 		background-color: $color-tools;

@@ -1,6 +1,7 @@
 @use "sass:color";
 
-$color-background: #0c0015;
+//$color-background: #0c0015;
+$color-background: #563373;
 
 $color-tools: #dacedf;
 $color-resume: #c0d3db;
@@ -10,11 +11,9 @@ $color-tools-nav: color.adjust($color-tools, $lightness: -5%);
 $color-games-nav: color.adjust($color-games, $lightness: -5%);
 $color-resume-nav: color.adjust($color-resume, $lightness: -5%);
 
-$color-blob-1: #3f0076;
-$color-blob-2: #ff00ae;
+$color-blob-1: #3c008f;
+$color-blob-2: #ff0099;
 $color-blob-fallback: color.mix($color-blob-1, $color-blob-2, 50%);
 
 $color-nameplate: color.adjust($color-blob-1, $lightness: -7%);
-//$color-nav: $color-nameplate;
-// darker than nameplate
 $color-nav: color.adjust($color-nameplate, $lightness: -10%);

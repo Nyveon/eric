@@ -10,7 +10,7 @@ nav {
 	letter-spacing: 0.3rem;
 	transition: font-size 1s ease-in-out;
 
-	mix-blend-mode: difference;
+	mix-blend-mode: exclusion;
 
 	z-index: 11;
 
@@ -36,20 +36,20 @@ nav {
 
 			a {
 				&[href="#tools"] {
-					color: $color-tools-nav;
+					color: $color-tools;
 				}
 
 				&[href="#games"] {
-					color: $color-games-nav;
+					color: $color-games;
 				}
 
 				&[href="#resume"] {
-					color: $color-resume-nav;
+					color: $color-resume;
 				}
 
 				text-decoration: none;
 				&:hover {
-					color: white;
+					color: green;
 				}
 			}
 
