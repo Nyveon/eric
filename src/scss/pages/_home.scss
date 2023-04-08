@@ -9,8 +9,6 @@ body {
 body#home main {
 	overflow: hidden;
 
-	//height: 200vh;
-
 	font-family: "Lato", sans-serif;
 	font-weight: 100;
 	color: #fff;
@@ -22,10 +20,10 @@ body#home main {
 
 		#nameplate {
 			@include flex(column, center, center);
-			@include size(16rem);
+			@include size(14rem);
+			border-radius: 2%;
 
-			border-radius: 1%;
-
+			opacity: 0.8;
 			background-color: $color-nameplate;
 			box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
 				rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -120,6 +118,7 @@ body#home main {
 				@include absolute();
 				@include size(100%);
 				opacity: math.div(0.2, $noise-backgrounds);
+				filter: contrast(1000%);
 
 				background-repeat: repeat;
 				background-attachment: fixed;
@@ -129,7 +128,7 @@ body#home main {
 					&:nth-child(#{$i + 1}) {
 						$image: $i % 3;
 						background-image: url(../img/noise-#{$image}.png);
-						animation: move-#{$i} $i * 7s + 100s linear infinite;
+						animation: move-#{$i} $i * 3s + 101s linear infinite;
 					}
 				}
 
