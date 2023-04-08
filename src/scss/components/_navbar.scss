@@ -1,0 +1,98 @@
+nav {
+	@include size(100%, $nav-height);
+	@include flex(column, center, auto);
+	position: sticky;
+	top: 0px;
+
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 2rem;
+	letter-spacing: 0.3rem;
+	transition: font-size 1s ease-in-out;
+
+	mix-blend-mode: exclusion;
+
+	z-index: 11;
+
+	ul {
+		display: flex;
+
+		li {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+
+			$padding: 15%;
+
+			&:first-child > a {
+				padding-left: $padding;
+				margin-right: auto;
+			}
+
+			&:last-child > a {
+				padding-right: $padding;
+				margin-left: auto;
+			}
+
+			a {
+				&[href="#tools"] {
+					color: $color-tools;
+				}
+
+				&[href="#games"] {
+					color: $color-games;
+				}
+
+				&[href="#resume"] {
+					color: $color-resume;
+				}
+
+				text-decoration: none;
+				&:hover {
+					color: green;
+				}
+			}
+
+			@media (max-width: $mobile) {
+				font-size: 1.2rem;
+				letter-spacing: 0.1rem;
+
+				$padding-mobile: 1rem;
+
+				&:first-child > a {
+					padding-left: $padding-mobile;
+				}
+
+				&:last-child > a {
+					padding-right: $padding-mobile;
+				}
+			}
+		}
+	}
+}
+
+.nav-back {
+	width: 100%;
+	height: $nav-height;
+	background-color: white;
+
+	position: sticky;
+	top: $nav-height;
+
+	transform: translateY(-100%);
+	margin-bottom: -$nav-height;
+
+	z-index: 9;
+
+	&.tools {
+		background-color: $color-tools-nav;
+	}
+
+	&.games {
+		background-color: $color-games-nav;
+	}
+
+	&.resume {
+		background-color: $color-resume-nav;
+	}
+}

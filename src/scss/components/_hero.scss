@@ -1,0 +1,50 @@
+#hero {
+	@include flex(row, center, center);
+	@include size(100%, $hero-height);
+
+	#nameplate {
+		z-index: 15;
+
+		@include flex(column, center, center);
+		@include size(14rem);
+		border-radius: 2%;
+
+		opacity: 0.8;
+		background-color: $color-nameplate;
+		box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+			rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+			rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+		> :first-child {
+			font-size: 3rem;
+			height: 50%;
+			display: flex;
+			align-items: flex-end;
+			padding-bottom: 0.8rem;
+		}
+
+		#links {
+			@include flex(column, center, center);
+			margin-top: 1rem;
+
+			a {
+				@include flex(row, center, center);
+				margin-bottom: 0.5rem;
+
+				img {
+					@include size(1.6rem);
+					margin-right: 0.5rem;
+					transition: transform 0.2s ease-in-out;
+				}
+
+				&:hover {
+					font-weight: 700;
+
+					img {
+						transform: scale(1.1);
+					}
+				}
+			}
+		}
+	}
+}
