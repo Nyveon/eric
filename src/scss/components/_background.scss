@@ -1,0 +1,88 @@
+@use "sass:math";
+
+$noise-backgrounds: 8;
+
+#background {
+	@include size(100%, 100vh);
+	position: absolute;
+	overflow: hidden;
+	pointer-events: none;
+	background-color: $color-background;
+
+	z-index: -1;
+
+	#blob {
+		@include absolute(50%, 50%, 50%, 50%);
+		@include size(40%);
+		translate: -50% -50%;
+		border-radius: 50%;
+
+		background-color: $color-blob-fallback;
+		background: linear-gradient(
+			0deg,
+			$color-blob-1 0%,
+			$color-blob-2 50%,
+			$color-blob-1 100%
+		);
+		opacity: 0.5;
+
+		animation: rotate 10s linear infinite;
+
+		@keyframes rotate {
+			0% {
+				transform: rotate(0deg);
+			}
+			50% {
+				scale: 1 2;
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	}
+
+	#blur {
+		@include absolute();
+		@include size(100%);
+		backdrop-filter: blur(12vmax);
+	}
+
+	#noise {
+		@include size(100%);
+		position: relative;
+		overflow: hidden;
+
+		div {
+			@include absolute();
+			@include size(100%);
+			filter: contrast(1000%);
+			opacity: math.div(0.2, $noise-backgrounds);
+
+			background-repeat: repeat;
+			background-attachment: fixed;
+			image-rendering: pixelated;
+
+			@for $i from 0 through $noise-backgrounds {
+				&:nth-child(#{$i + 1}) {
+					$image: $i % 3;
+					background-image: url(../img/noise-#{$image}.png);
+					animation: move-#{$i} $i * 3s + 101s linear infinite;
+				}
+			}
+
+			$angle: math.div(360deg, $noise-backgrounds);
+
+			@for $i from 0 through $noise-backgrounds {
+				@keyframes move-#{$i} {
+					0% {
+						background-position: $i * 3% $i * 5%;
+					}
+					100% {
+						background-position: (math.sin($i * $angle) * 100%)
+							(math.cos($i * $angle) * 100%);
+					}
+				}
+			}
+		}
+	}
+}
