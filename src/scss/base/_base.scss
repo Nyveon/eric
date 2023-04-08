@@ -2,7 +2,7 @@ html,
 body {
 	width: 100%;
 	height: 300vh;
-	//background-color: black;
+	background-color: $color-background;
 }
 
 main {
@@ -11,4 +11,20 @@ main {
 	font-family: "Lato", sans-serif;
 	font-weight: 100;
 	color: #fff;
+}
+
+section {
+	height: 80vh;
+
+	&#tools {
+		background-color: $color-tools;
+	}
+
+	&#games {
+		background-color: $color-games;
+	}
+
+	&#resume {
+		background-color: $color-resume;
+	}
 }

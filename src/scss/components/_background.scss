@@ -9,7 +9,7 @@ $noise-backgrounds: 8;
 	pointer-events: none;
 	background-color: $color-background;
 
-	z-index: -1;
+	z-index: 10;
 
 	#blob {
 		@include absolute(50%, 50%, 50%, 50%);
@@ -31,9 +31,6 @@ $noise-backgrounds: 8;
 		@keyframes rotate {
 			0% {
 				transform: rotate(0deg);
-			}
-			50% {
-				scale: 1 2;
 			}
 			100% {
 				transform: rotate(360deg);

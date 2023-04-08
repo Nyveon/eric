@@ -3,6 +3,8 @@
 	@include size(100%, $hero-height);
 
 	#nameplate {
+		z-index: 15;
+
 		@include flex(column, center, center);
 		@include size(14rem);
 		border-radius: 2%;

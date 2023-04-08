@@ -2,7 +2,7 @@ nav {
 	@include size(100%, $nav-height);
 	@include flex(column, center, auto);
 	position: sticky;
-	top: 0;
+	top: 0px;
 
 	text-transform: uppercase;
 	font-weight: 700;
@@ -10,7 +10,9 @@ nav {
 	letter-spacing: 0.3rem;
 	transition: font-size 1s ease-in-out;
 
-	color: white;
+	mix-blend-mode: difference;
+
+	z-index: 11;
 
 	ul {
 		display: flex;
@@ -33,9 +35,21 @@ nav {
 			}
 
 			a {
+				&[href="#tools"] {
+					color: $color-tools-nav;
+				}
+
+				&[href="#games"] {
+					color: $color-games-nav;
+				}
+
+				&[href="#resume"] {
+					color: $color-resume-nav;
+				}
+
 				text-decoration: none;
 				&:hover {
-					color: $color-blob-2;
+					color: white;
 				}
 			}
 
@@ -54,5 +68,31 @@ nav {
 				}
 			}
 		}
+	}
+}
+
+.nav-back {
+	width: 100%;
+	height: $nav-height;
+	background-color: white;
+
+	position: sticky;
+	top: $nav-height;
+
+	transform: translateY(-100%);
+	margin-bottom: -$nav-height;
+
+	z-index: 9;
+
+	&.tools {
+		background-color: $color-tools-nav;
+	}
+
+	&.games {
+		background-color: $color-games-nav;
+	}
+
+	&.resume {
+		background-color: $color-resume-nav;
 	}
 }

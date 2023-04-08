@@ -2,6 +2,14 @@
 
 $color-background: #0c0015;
 
+$color-tools: #dacedf;
+$color-resume: #c0d3db;
+$color-games: color.mix($color-tools, $color-resume, 50%);
+
+$color-tools-nav: color.adjust($color-tools, $lightness: -5%);
+$color-games-nav: color.adjust($color-games, $lightness: -5%);
+$color-resume-nav: color.adjust($color-resume, $lightness: -5%);
+
 $color-blob-1: #3f0076;
 $color-blob-2: #ff00ae;
 $color-blob-fallback: color.mix($color-blob-1, $color-blob-2, 50%);
