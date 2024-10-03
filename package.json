@@ -1,24 +1,25 @@
 {
-    "name": "ericl",
+    "name": "eric",
     "version": "1.0.0",
-    "description": "My personal portfolio page: eri.cl",
+    "description": "My personal portfolio page: eric.tc",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "start": "eleventy --serve",
         "build": "eleventy"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Nyveon/ericl.git"
+        "url": "git+https://github.com/Nyveon/eric.git"
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
+    "license": "GPL",
     "bugs": {
-        "url": "https://github.com/Nyveon/ericl/issues"
+        "url": "https://github.com/Nyveon/eric/issues"
     },
-    "homepage": "https://github.com/Nyveon/ericl#readme",
+    "homepage": "https://github.com/Nyveon/eric#readme",
     "devDependencies": {
-        "@11ty/eleventy": "^2.0.1"
+        "@11ty/eleventy": "^3.0.0"
     }
 }
