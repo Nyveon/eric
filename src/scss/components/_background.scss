@@ -44,7 +44,11 @@ $noise-backgrounds: 3;
 
 			@for $i from 1 through $noise-backgrounds {
 				&:nth-child(#{$i}) {
-					animation: move-#{$i} list.nth($times, $i) * 5s linear infinite;
+					animation: move-#{$i}
+						list.nth($times, $i) *
+						5s
+						steps(2000, end)
+						infinite;
 					animation-direction: alternate;
 				}
 			}
@@ -66,6 +70,10 @@ $noise-backgrounds: 3;
 							);
 					}
 				}
+			}
+
+			svg {
+				shape-rendering: optimizeSpeed;
 			}
 		}
 	}

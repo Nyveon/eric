@@ -5,3 +5,5 @@ package-lock.json
 # Ignore folders from source code editors
 .idea
 .vscode
+
+_site
