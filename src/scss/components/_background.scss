@@ -47,7 +47,7 @@ $noise-backgrounds: 3;
 					animation: move-#{$i}
 						list.nth($times, $i) *
 						5s
-						steps(2000, end)
+						steps(3000, end)
 						infinite;
 					animation-direction: alternate;
 				}
@@ -60,13 +60,14 @@ $noise-backgrounds: 3;
 				@keyframes move-#{$i} {
 					0% {
 						transform: skewX(0.1deg)
-							translate((25%) + $i * 1%, (-25%) + $i * 1%);
+							translate3d((25%) + $i * 1%, (-25%) + $i * 1%, 0);
 					}
 					100% {
 						transform: skewX(0.1deg)
-							translate(
+							translate3d(
 								25% + math.cos($i * $angle-interval + $angle-offset) * 25%,
-								-25% + math.sin($i * $angle-interval + $angle-offset) * -25%
+								-25% + math.sin($i * $angle-interval + $angle-offset) * -25%,
+								0
 							);
 					}
 				}
