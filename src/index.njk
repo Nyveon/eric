@@ -15,26 +15,24 @@ name: "home"
     {% set brightness = '0.5' %}
 
     {% for i in range(4) %}
-        <div class="noise">
-            <svg viewBox='0 0 1000 500' preserveAspectRatio="xMidYMid slice" xmlns='http://www.w3.org/2000/svg'>
-                <filter id='noiseFilter-{{i}}'>
-                    <feTurbulence 
-                    type='fractalNoise' 
-                    baseFrequency='1' 
-                    numOctaves='1' 
-                    stitchTiles='stitch'
-                    seed='{{i}}'/>
-                    <feComponentTransfer>
-                        <feFuncR type="linear" slope="{{brightness}}"/>
-                        <feFuncG type="linear" slope="{{brightness}}"/>
-                        <feFuncB type="linear" slope="{{brightness}}"/>
-                    </feComponentTransfer>
-                    <feColorMatrix type="saturate" values="0" />
-                </filter>
+        <svg class='noise' viewBox='0 0 1000 500' preserveAspectRatio="xMidYMid slice" xmlns='http://www.w3.org/2000/svg'>
+            <filter id='noiseFilter-{{i}}'>
+                <feTurbulence 
+                type='fractalNoise' 
+                baseFrequency='1' 
+                numOctaves='1' 
+                stitchTiles='stitch'
+                seed='{{i}}'/>
+                <feComponentTransfer>
+                    <feFuncR type="linear" slope="{{brightness}}"/>
+                    <feFuncG type="linear" slope="{{brightness}}"/>
+                    <feFuncB type="linear" slope="{{brightness}}"/>
+                </feComponentTransfer>
+                <feColorMatrix type="saturate" values="0" />
+            </filter>
 
-                <rect shape-rendering="optimizeSpeed" width="100%" height="100%" filter='url(#noiseFilter-{{i}})'/>
-            </svg>
-        </div>
+            <rect shape-rendering="optimizeSpeed" width="100%" height="100%" filter='url(#noiseFilter-{{i}})'/>
+        </svg>
     {% endfor %}
 
 	</div>

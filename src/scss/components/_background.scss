@@ -39,6 +39,11 @@ $noise-backgrounds: 3;
 
 			mix-blend-mode: multiply;
 			image-rendering: pixelated;
+			shape-rendering: optimizeSpeed;
+
+			* {
+				shape-rendering: optimizeSpeed;
+			}
 
 			$times: 79.1, 89.3, 97.5;
 
@@ -71,10 +76,6 @@ $noise-backgrounds: 3;
 							);
 					}
 				}
-			}
-
-			svg {
-				shape-rendering: optimizeSpeed;
 			}
 		}
 	}
