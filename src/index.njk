@@ -15,7 +15,7 @@ name: "home"
     {% set brightness = '0.5' %}
 
     {% for i in range(4) %}
-        <svg viewBox='0 0 1000 500' preserveAspectRatio="xMidYMid slice" xmlns='http://www.w3.org/2000/svg' class="noise">
+        <svg class='noise' viewBox='0 0 1000 500' preserveAspectRatio="xMidYMid slice" xmlns='http://www.w3.org/2000/svg'>
             <filter id='noiseFilter-{{i}}'>
                 <feTurbulence 
                 type='fractalNoise' 
