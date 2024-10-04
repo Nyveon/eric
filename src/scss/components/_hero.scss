@@ -28,10 +28,8 @@
 				gap: 0.25rem;
 				margin-bottom: 0.5rem;
 
-				img {
-					@include size(1.6rem);
-					margin-right: 0.5rem;
-					transition: transform $animation-speed ease-in-out;
+				svg {
+					transition: all $animation-speed ease-in-out;
 				}
 
 				span {

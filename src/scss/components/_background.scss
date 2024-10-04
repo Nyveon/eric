@@ -15,8 +15,8 @@ $noise-backgrounds: 3;
 	align-items: center;
 
 	background: linear-gradient(
-		in oklab 0deg,
-		#c70056 0%,
+		in oklch 0deg,
+		#5f01b2 0%,
 		$color-background 100%
 	);
 
@@ -40,11 +40,11 @@ $noise-backgrounds: 3;
 			mix-blend-mode: multiply;
 			image-rendering: pixelated;
 
-			$times: 79, 89, 97;
+			$times: 79.1, 89.3, 97.5;
 
 			@for $i from 1 through $noise-backgrounds {
 				&:nth-child(#{$i}) {
-					animation: move-#{$i} list.nth($times, $i) * 1s linear infinite;
+					animation: move-#{$i} list.nth($times, $i) * 5s linear infinite;
 					animation-direction: alternate;
 				}
 			}
@@ -55,13 +55,15 @@ $noise-backgrounds: 3;
 			@for $i from 0 through $noise-backgrounds {
 				@keyframes move-#{$i} {
 					0% {
-						transform: translate((25%) + $i * 1%, (-25%) + $i * 1%);
+						transform: skewX(0.1deg)
+							translate((25%) + $i * 1%, (-25%) + $i * 1%);
 					}
 					100% {
-						transform: translate(
-							25% + math.cos($i * $angle-interval + $angle-offset) * 25%,
-							-25% + math.sin($i * $angle-interval + $angle-offset) * -25%
-						);
+						transform: skewX(0.1deg)
+							translate(
+								25% + math.cos($i * $angle-interval + $angle-offset) * 25%,
+								-25% + math.sin($i * $angle-interval + $angle-offset) * -25%
+							);
 					}
 				}
 			}
