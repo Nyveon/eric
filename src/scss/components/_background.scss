@@ -6,9 +6,7 @@ $noise-backgrounds: 3;
 #background {
 	@include size(100%, 100vh);
 	@include absolute();
-	// position: fixed;
 	pointer-events: none;
-	// z-index: -10;
 
 	z-index: 10;
 
@@ -16,7 +14,6 @@ $noise-backgrounds: 3;
 	justify-content: center;
 	align-items: center;
 
-	// background-color: $color-background;
 	background: linear-gradient(
 		in oklab 0deg,
 		#c70056 0%,
@@ -47,8 +44,6 @@ $noise-backgrounds: 3;
 
 			@for $i from 1 through $noise-backgrounds {
 				&:nth-child(#{$i}) {
-					// $image: $i % 3;
-					// background-image: url(../img/noise-#{$image}.png);
 					animation: move-#{$i} list.nth($times, $i) * 1s linear infinite;
 					animation-direction: alternate;
 				}

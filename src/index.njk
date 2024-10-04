@@ -3,18 +3,16 @@ layout: base.njk
 name: "home"
 ---
 
+{% from "macros.njk" import icon %}
+
 <script defer src="js/index.js"></script>
 
 <div id="background">
 	<div id="blob"></div>
 	<div id="blur"></div>
 	<div id="noises">
-        {# <div class="noise static"></div>
-		{% for i in range(1) %}
-		<img class="noise dynamic" src="/img/noise-{{i}}.png"></img>
-		{% endfor %} #}
 
-        {% set brightness = '0.5' %}
+    {% set brightness = '0.5' %}
 
     {% for i in range(4) %}
         <svg viewBox='0 0 1000 500' preserveAspectRatio="xMidYMid slice" xmlns='http://www.w3.org/2000/svg' class="noise">
@@ -31,11 +29,6 @@ name: "home"
                     <feFuncB type="linear" slope="{{brightness}}"/>
                 </feComponentTransfer>
                 <feColorMatrix type="saturate" values="0" />
-                {# <feComponentTransfer>
-                    <feFuncR type="linear" slope="{{brightness}}" intercept="{{-(0.5 * contrast) + 0.5}}"/>
-                    <feFuncG type="linear" slope="{{brightness}}" intercept="{{-(0.5 * contrast) + 0.5}}"/>
-                    <feFuncB type="linear" slope="{{brightness}}" intercept="{{-(0.5 * contrast) + 0.5}}"/>
-                </feComponentTransfer> #}
             </filter>
 
             <rect shape-rendering="optimizeSpeed" width="100%" height="100%" filter='url(#noiseFilter-{{i}})'/>
@@ -49,11 +42,11 @@ name: "home"
 	<div id="nameplate">
 		<h1 id="nametag" data-first="Eric K" data-second="Nyveon">Eric K</h1>
 		<div id="links">
-			<a href="https://github.com/nyveon" target="_blank"
-				><img src="/img/github.svg" alt="Github" />@Nyveon</a
+			<a href="{{ info.githubURL }}" target="_blank"
+            >{{ icon('github', 'light') }}<span>{{ info.github }}</span></a
 			>
 			<a href="mailto:work@eri.cl" target="_blank"
-				><img src="/img/contact.svg" alt="Contact" />work@eri.cl</a
+				>{{ icon('mail', 'light') }}<span>{{ info.email }}</span></a
 			>
 		</div>
 	</div>
@@ -62,34 +55,41 @@ name: "home"
 <nav>
 	<ul>
 		<li>
-			<a href="#tools">Tools</a>
+			<a href="#about">About</a>
+
 		</li>
 		<li>
-			<a href="#games">Games</a>
+			<a href="#projects">Projects</a>
+            {# Top N dev projects #}
+            {# See more #}
+            {# Top N gamedev projects #}
+            {# See more #}
 		</li>
 		<li>
 			<a href="#resume">Resume</a>
+            {# Work experience #}
+            {# Skills #}
 		</li>
 	</ul>
 </nav>
 
-<div class="nav-back tools"></div>
+<div class="nav-back"></div>
 
-<section id="tools">
+<section id="about">
 	<h2>
 		Sorry, this section is still under construction! Check back in a few days.
 	</h2>
 </section>
 
-<div class="nav-back games"></div>
+<div class="nav-back"></div>
 
-<section id="games">
+<section id="projects">
 	<h2>
 		Sorry, this section is still under construction! Check back in a few days.
 	</h2>
 </section>
 
-<div class="nav-back resume"></div>
+<div class="nav-back"></div>
 
 <section id="resume">
 	<h2>
