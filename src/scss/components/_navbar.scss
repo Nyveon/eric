@@ -35,21 +35,11 @@ nav {
 			}
 
 			a {
-				&[href="#tools"] {
-					color: $color-tools;
-				}
-
-				&[href="#games"] {
-					color: $color-games;
-				}
-
-				&[href="#resume"] {
-					color: $color-resume;
-				}
+				color: white;
 
 				text-decoration: none;
 				&:hover {
-					color: green;
+					color: rgb(0, 100, 255);
 				}
 			}
 

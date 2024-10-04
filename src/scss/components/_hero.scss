@@ -9,39 +9,56 @@
 		@include size(14rem);
 		border-radius: 2%;
 
-		opacity: 0.8;
 		background-color: $color-nameplate;
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
 			rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
 			rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
-		> :first-child {
-			font-size: 3rem;
-			height: 50%;
-			display: flex;
-			align-items: flex-end;
-			padding-bottom: 0.8rem;
+		#nametag {
+			cursor: pointer;
 		}
 
 		#links {
 			@include flex(column, center, center);
-			margin-top: 1rem;
 
 			a {
+				$animation-speed: 0.2s;
+
 				@include flex(row, center, center);
+				gap: 0.25rem;
 				margin-bottom: 0.5rem;
 
-				img {
-					@include size(1.6rem);
-					margin-right: 0.5rem;
-					transition: transform 0.2s ease-in-out;
+				svg {
+					transition: all $animation-speed ease-in-out;
 				}
 
-				&:hover {
-					font-weight: 700;
+				span {
+					position: relative;
+				}
 
-					img {
+				span::after {
+					@include absolute(auto, auto, -2px, 0);
+					@include size(100%, 0.1rem);
+					content: "";
+
+					background-color: $color-link-underline;
+
+					transform: scale(0);
+					transform-origin: center;
+					transition: transform $animation-speed;
+				}
+
+				&:hover,
+				&:focus {
+					font-weight: 700;
+					color: $color-link-text;
+
+					svg {
 						transform: scale(1.1);
+					}
+
+					span::after {
+						transform: scale(1);
 					}
 				}
 			}
