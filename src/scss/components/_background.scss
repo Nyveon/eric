@@ -53,6 +53,8 @@ $noise-backgrounds: 3;
 						list.nth($times, $i) *
 						5s
 						steps(3000, end)
+						$i *
+						100ms
 						infinite;
 					animation-direction: alternate;
 				}
