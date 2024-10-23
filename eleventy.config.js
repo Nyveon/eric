@@ -15,4 +15,8 @@ export default function (eleventyConfig) {
 	eleventyConfig.setDataDirectory("data");
 	eleventyConfig.setIncludesDirectory("includes");
 	eleventyConfig.setOutputDirectory("_site");
+
+	eleventyConfig.setServerOptions({
+		watch: ["./_site/css/*.css"],
+	});
 }

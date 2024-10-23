@@ -1,6 +1,10 @@
+@use "../utilities/mixins" as *;
+@use "../utilities/sizes";
+@use "../utilities/colors";
+
 #hero {
 	@include flex(row, center, center);
-	@include size(100%, $hero-height);
+	@include size(100%, sizes.$hero-height);
 
 	#nameplate {
 		z-index: 15;
@@ -9,7 +13,7 @@
 		@include size(14rem);
 		border-radius: 2%;
 
-		background-color: $color-nameplate;
+		background-color: colors.$nameplate;
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
 			rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
 			rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -41,7 +45,7 @@
 					@include size(100%, 0.1rem);
 					content: "";
 
-					background-color: $color-link-underline;
+					background-color: colors.$link-underline;
 
 					transform: scale(0);
 					transform-origin: center;
@@ -51,7 +55,7 @@
 				&:hover,
 				&:focus {
 					font-weight: 700;
-					color: $color-link-text;
+					color: colors.$link-text;
 
 					svg {
 						transform: scale(1.1);

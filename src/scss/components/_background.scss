@@ -1,5 +1,7 @@
 @use "sass:math";
 @use "sass:list";
+@use "../utilities/colors";
+@use "../utilities/mixins" as *;
 
 $noise-backgrounds: 3;
 
@@ -17,7 +19,7 @@ $noise-backgrounds: 3;
 	background: linear-gradient(
 		in oklch 0deg,
 		#5f01b2 0%,
-		$color-background 100%
+		colors.$background 100%
 	);
 
 	#noises {

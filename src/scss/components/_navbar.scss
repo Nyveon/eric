@@ -1,5 +1,9 @@
+@use "../utilities/colors";
+@use "../utilities/sizes";
+@use "../utilities/mixins" as *;
+
 nav {
-	@include size(100%, $nav-height);
+	@include size(100%, sizes.$nav-height);
 	@include flex(column, center, auto);
 	position: sticky;
 	top: 0px;
@@ -43,7 +47,7 @@ nav {
 				}
 			}
 
-			@media (max-width: $mobile) {
+			@media (max-width: sizes.$mobile) {
 				font-size: 1.2rem;
 				letter-spacing: 0.1rem;
 
@@ -63,26 +67,26 @@ nav {
 
 .nav-back {
 	width: 100%;
-	height: $nav-height;
+	height: sizes.$nav-height;
 	background-color: white;
 
 	position: sticky;
-	top: $nav-height;
+	top: sizes.$nav-height;
 
 	transform: translateY(-100%);
-	margin-bottom: -$nav-height;
+	margin-bottom: -(sizes.$nav-height);
 
 	z-index: 9;
 
 	&.tools {
-		background-color: $color-tools-nav;
+		background-color: colors.$tools-nav;
 	}
 
 	&.games {
-		background-color: $color-games-nav;
+		background-color: colors.$games-nav;
 	}
 
 	&.resume {
-		background-color: $color-resume-nav;
+		background-color: colors.$resume-nav;
 	}
 }

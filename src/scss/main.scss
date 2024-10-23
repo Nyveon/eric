@@ -1,11 +1,2 @@
-@import "utilities/mixins";
-@import "utilities/colors";
-@import "utilities/sizes";
-
-@import "base/reset";
-@import "base/base";
-
-@import "components/hero";
-@import "components/background";
-@import "components/navbar";
-@import "components/icon";
+@use "base";
+@use "components";
