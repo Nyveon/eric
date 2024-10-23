@@ -1,0 +1,4 @@
+Sitemap: https://eric.tc/sitemap.xml
+
+User-agent: *
+Disallow:
