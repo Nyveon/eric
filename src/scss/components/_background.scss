@@ -22,67 +22,67 @@ $noise-backgrounds: 3;
 		colors.$background 100%
 	);
 
-	#noises {
-		mix-blend-mode: screen;
+	// #noises {
+	// 	mix-blend-mode: screen;
 
-		backface-visibility: hidden;
-		@include size(100%);
-		background-color: white;
-		position: relative;
-		overflow: hidden;
-		filter: contrast(1200%) brightness(2);
+	// 	backface-visibility: hidden;
+	// 	@include size(100%);
+	// 	background-color: white;
+	// 	position: relative;
+	// 	overflow: hidden;
+	// 	filter: contrast(1200%) brightness(2);
 
-		.noise {
-			will-change: transform;
+	// 	.noise {
+	// 		will-change: transform;
 
-			backface-visibility: hidden;
-			@include absolute();
-			@include size(200%);
+	// 		backface-visibility: hidden;
+	// 		@include absolute();
+	// 		@include size(200%);
 
-			mix-blend-mode: multiply;
-			image-rendering: pixelated;
-			shape-rendering: optimizeSpeed;
+	// 		mix-blend-mode: multiply;
+	// 		image-rendering: pixelated;
+	// 		shape-rendering: optimizeSpeed;
 
-			* {
-				shape-rendering: optimizeSpeed;
-			}
+	// 		* {
+	// 			shape-rendering: optimizeSpeed;
+	// 		}
 
-			$times: 79.1, 89.3, 97.5;
+	// 		$times: 79.1, 89.3, 97.5;
 
-			@for $i from 1 through $noise-backgrounds {
-				&:nth-child(#{$i}) {
-					animation: move-#{$i}
-						list.nth($times, $i) *
-						5s
-						steps(3000, end)
-						$i *
-						100ms
-						infinite;
-					animation-direction: alternate;
-				}
-			}
+	// 		@for $i from 1 through $noise-backgrounds {
+	// 			&:nth-child(#{$i}) {
+	// 				animation: move-#{$i}
+	// 					list.nth($times, $i) *
+	// 					5s
+	// 					steps(3000, end)
+	// 					$i *
+	// 					100ms
+	// 					infinite;
+	// 				animation-direction: alternate;
+	// 			}
+	// 		}
 
-			$angle-interval: math.div(360deg, $noise-backgrounds);
-			$angle-offset: 17;
+	// 		$angle-interval: math.div(360deg, $noise-backgrounds);
+	// 		$angle-offset: 17;
 
-			@for $i from 0 through $noise-backgrounds {
-				@keyframes move-#{$i} {
-					0% {
-						transform: skewX(0.1deg)
-							translate3d((25%) + $i * 1%, (-25%) + $i * 1%, 0);
-					}
-					100% {
-						transform: skewX(0.1deg)
-							translate3d(
-								25% + math.cos($i * $angle-interval + $angle-offset) * 25%,
-								-25% + math.sin($i * $angle-interval + $angle-offset) * -25%,
-								0
-							);
-					}
-				}
-			}
-		}
-	}
+	// 		@for $i from 0 through $noise-backgrounds {
+	// 			@keyframes move-#{$i} {
+	// 				0% {
+	// 					transform: skewX(0.1deg)
+	// 						translate3d((25%) + $i * 1%, (-25%) + $i * 1%, 0);
+	// 				}
+	// 				100% {
+	// 					transform: skewX(0.1deg)
+	// 						translate3d(
+	// 							25% + math.cos($i * $angle-interval + $angle-offset) * 25%,
+	// 							-25% + math.sin($i * $angle-interval + $angle-offset) * -25%,
+	// 							0
+	// 						);
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 // #background {
