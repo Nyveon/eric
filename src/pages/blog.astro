@@ -1,18 +1,28 @@
 ---
+import BlogPost from "@components/BlogPost.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import type { MarkdownInstance } from "astro";
+const pageTitle = "My Blog";
 
+export interface BlogPostFrontmatter {
+	title: string;
+	description?: string;
+	tags: string[];
+}
+
+const allPosts = Object.values(
+	import.meta.glob<MarkdownInstance<BlogPostFrontmatter>>("./posts/*.md", {
+		eager: true,
+	})
+);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-        <a href="/">Home</a>
-		<h1>Blog posts</h1>
-        <p>Imagine this is a blog post</p>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+	<ul>
+		{
+			allPosts.map((post) => {
+				return <BlogPost url={post.url} title={post.frontmatter.title} />;
+			})
+		}
+	</ul>
+</BaseLayout>
