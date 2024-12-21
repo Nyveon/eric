@@ -1,5 +1,5 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/strictest",
   "include": [
     ".astro/types.d.ts",
     "**/*",
@@ -17,6 +17,6 @@
         "@pages/*": ["src/pages/*"],
         "@assets/*": ["src/assets/*"]     
     },
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
   }
 }

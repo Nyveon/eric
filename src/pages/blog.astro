@@ -1,27 +1,17 @@
 ---
 import BlogPost from "@components/BlogPost.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import type { MarkdownInstance } from "astro";
+import { getCollection } from "astro:content";
 const pageTitle = "My Blog";
 
-export interface BlogPostFrontmatter {
-	title: string;
-	description?: string;
-	tags: string[];
-}
-
-const allPosts = Object.values(
-	import.meta.glob<MarkdownInstance<BlogPostFrontmatter>>("./posts/*.md", {
-		eager: true,
-	})
-);
+const allPosts = await getCollection("blog");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 	<ul>
 		{
 			allPosts.map((post) => {
-				return <BlogPost url={post.url} title={post.frontmatter.title} />;
+				return <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />;
 			})
 		}
 	</ul>
