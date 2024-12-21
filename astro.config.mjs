@@ -5,6 +5,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://astro.build/config
 export default defineConfig({
+	site: "https://eric.tc",
 	vite: {
 		css: {
 			preprocessorOptions: {
@@ -22,7 +23,7 @@ export default defineConfig({
 			}),
 		],
 	},
-    experimental: {
-        contentIntellisense: true,
-    }
+	experimental: {
+		contentIntellisense: true,
+	},
 });
