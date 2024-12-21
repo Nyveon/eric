@@ -26,4 +26,8 @@ export default defineConfig({
 	experimental: {
 		contentIntellisense: true,
 	},
+	i18n: {
+		locales: ["en", "es"],
+		defaultLocale: "en",
+	},
 });

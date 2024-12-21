@@ -1,6 +1,7 @@
 ---
+export { getStaticPaths } from "@i18n/utils";
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 const allPosts = await getCollection("blog");
 

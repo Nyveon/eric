@@ -1,5 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+export { getStaticPaths } from "@i18n/utils";
+import BaseLayout from "@layouts/BaseLayout.astro";
 const pageTitle = "About Me";
 
 const identity = {
@@ -21,19 +22,18 @@ const textCase = "uppercase";
 ---
 
 <style is:global define:vars={{ skillColor, fontWeight, textCase }}>
-    h1 {
-        color: purple;
-        font-size: 4rem;
-    }
-    .skill {
-        color: var(--skillColor);
-        font-weight: var(--fontWeight);
-        text-transform: var(--textCase);
-    }
+	h1 {
+		color: purple;
+		font-size: 4rem;
+	}
+	.skill {
+		color: var(--skillColor);
+		font-weight: var(--fontWeight);
+		text-transform: var(--textCase);
+	}
 </style>
 
 <BaseLayout pageTitle={pageTitle}>
-
 	<p>Here are a few facts about me:</p>
 	<ul>
 		<li>My name is {identity.firstName}.</li>

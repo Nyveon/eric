@@ -1,9 +1,10 @@
 ---
 import { useLocalization } from "@i18n/utils";
+export { getStaticPaths } from "@i18n/utils";
 import BaseLayout from "@layouts/BaseLayout.astro";
 const { t } = useLocalization(Astro.currentLocale);
 ---
 
-<BaseLayout pageTitle={t.e404.title}>
-	<h2>404 - {t.e404.text}</h2>
+<BaseLayout pageTitle={t.pages.home}>
+	<h2>{t.home.subtitle}</h2>
 </BaseLayout>

@@ -1,7 +1,10 @@
 ---
+import { useLocalization } from "@i18n/utils";
+const { t, h } = useLocalization(Astro.currentLocale);
 ---
+
 <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/blog">Blog</a>
-  </div>
+	<a href={h("/")}>{t.pages.home}</a>
+	<a href={h("/about")}>{t.pages.about}</a>
+	<a href={h("/blog")}>{t.pages.blog}</a>
+</div>
