@@ -1,7 +1,7 @@
 // @ts-check
 // @ts-check
 import { defineConfig } from "astro/config";
-import { visualizer } from "rollup-plugin-visualizer";
+// import { visualizer } from "rollup-plugin-visualizer";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,12 +15,12 @@ export default defineConfig({
 			},
 		},
 		plugins: [
-			visualizer({
-				emitFile: false,
-				filename: "stats.html",
-				open: true,
-				template: "sunburst",
-			}),
+			// visualizer({
+			// 	emitFile: false,
+			// 	filename: "stats.html",
+			// 	open: true,
+			// 	template: "sunburst",
+			// }),
 		],
 	},
 	experimental: {

@@ -1,0 +1,154 @@
+<script type="text/js-worker">
+	console.log("registered");
+
+	let canvas = null;
+	let ctx = null;
+	let currentTime = 0;
+	const scale = 1;
+	const angularSpeed = 0.3;
+	let lastAngleX = 0;
+	let angleX = 0;
+	let angleY = 0;
+
+	let lastUpdate = 0;
+	let lastFrame = 0;
+
+	const fps = 15;
+	const mspf = 1000 / fps;
+
+	self.onmessage = (event) => {
+		canvas = event.data.canvas;
+		ctx = canvas.getContext("2d");
+
+		// this is because firefox freezes the animation in the background
+		setInterval(render, fps);
+		requestAnimationFrame(update);
+	};
+
+	function render() {
+		const timestamp = Date.now();
+
+		// Firefox fix part 2
+		if (timestamp > fps) {
+			anim((timestamp - lastFrame) / 1000);
+		}
+
+		if (timestamp - lastUpdate > fps) {
+			lastUpdate = timestamp;
+			drawCube();
+			postMessage(0);
+		}
+	}
+
+	function anim(delta) {
+		lastAngleX = angleX;
+		angleX += angularSpeed * delta;
+		angleY += angularSpeed * delta;
+		lastFrame = Date.now();
+	}
+
+	function update(timestamp) {
+		lastUpdateUpdate = Date.now();
+		const delta = (timestamp - currentTime) / 1000;
+		currentTime = timestamp;
+
+		anim(delta);
+		render();
+		requestAnimationFrame(update);
+	}
+
+	const normalizedVertices = [
+		[-1, -1, -1],
+		[1, -1, -1],
+		[1, 1, -1],
+		[-1, 1, -1],
+		[-1, -1, 1],
+		[1, -1, 1],
+		[1, 1, 1],
+		[-1, 1, 1],
+	];
+
+	const vertices = normalizedVertices.map(([x, y, z]) => [
+		x * scale,
+		y * scale,
+		z * scale,
+	]);
+
+	const edges = [
+		[0, 1],
+		[1, 2],
+		[2, 3],
+		[3, 0],
+		[4, 5],
+		[5, 6],
+		[6, 7],
+		[7, 4],
+		[0, 4],
+		[1, 5],
+		[2, 6],
+		[3, 7],
+	];
+
+	// Rotation matrix multiplication
+	function rotate(point, angleX, angleY) {
+		let [x, y, z] = point;
+
+		let tempY = y * Math.cos(angleX) - z * Math.sin(angleX);
+		let tempZ = y * Math.sin(angleX) + z * Math.cos(angleX);
+		y = tempY;
+		z = tempZ;
+
+		let tempX = x * Math.cos(angleY) + z * Math.sin(angleY);
+		z = -x * Math.sin(angleY) + z * Math.cos(angleY);
+		x = tempX;
+
+		return [x, y, z];
+	}
+
+	// Basic perspective projection
+	function project(point) {
+		const [x, y, z] = point;
+		const scale = 42 / (z + 5);
+		const px = x * scale + canvas.width / 2;
+		const py = y * scale + canvas.height / 2;
+		return [px, py];
+	}
+
+	function drawCube() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.strokeStyle = "#00ff00";
+
+		const projectedVertices = vertices.map((v) =>
+			project(rotate(v, angleX, angleY))
+		);
+
+		edges.forEach(([start, end]) => {
+			const [x1, y1] = projectedVertices[start];
+			const [x2, y2] = projectedVertices[end];
+			ctx.beginPath();
+			ctx.moveTo(x1, y1);
+			ctx.lineTo(x2, y2);
+			ctx.stroke();
+		});
+	}
+</script>
+
+<script>
+	const workerScripts = [
+		...document.querySelectorAll("script[type='text\/js-worker']"),
+	].flatMap((script) => script.textContent ?? []);
+
+	const blob = new Blob(workerScripts, { type: "text/javascript" });
+
+	const faviconLink = document.querySelector('link[rel*="icon"]');
+	const worker = new Worker(URL.createObjectURL(blob));
+	const canvas = document.createElement("canvas");
+	canvas.width = 32;
+	canvas.height = 32;
+	const canvasWorker = canvas.transferControlToOffscreen();
+	worker.postMessage({ canvas: canvasWorker }, [canvasWorker]);
+
+	worker.onmessage = () => {
+		faviconLink?.setAttribute("href", canvas.toDataURL());
+	};
+</script>

@@ -3,4 +3,5 @@
     "editor.formatOnSave": true,
     "astro.content-intellisense": true,
     "liveServer.settings.multiRootWorkspaceName": "eric",
+    "liveServer.settings.port": 5501,
 }
