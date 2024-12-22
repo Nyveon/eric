@@ -53,9 +53,13 @@ export function useLocalization(lang: string | undefined) {
 }
 
 export const getStaticPaths = (): GetStaticPathsResult => [
-	...Object.values(LangCode).map((lang) => ({
-		params: { lang },
-	})),
+	...Object.values(LangCode).flatMap((lang) =>
+		lang === defaultLang
+			? []
+			: {
+					params: { lang },
+				}
+	),
 	{ params: { lang: undefined } },
 ];
 
@@ -64,14 +68,20 @@ export function perLocaleStaticPaths<T extends GetStaticPathsResult>(
 ): T {
 	const langPaths = getStaticPaths();
 
-	const paths = langPaths.flatMap((langPath) => {
-		return basePaths.map((path) => {
-			return {
-				...path,
-				params: { lang: langPath.params.lang, ...path.params },
-			};
+	// const paths = langPaths.flatMap((langPath) => {
+	// 	return basePaths.map((path) => {
+	// 		return {
+	// 			...path,
+	// 			params: { lang: langPath.params.lang, ...path.params },
+	// 		};
+	// 	});
+	// });
+
+	basePaths.forEach((path) => {
+		langPaths.forEach((langPath) => {
+			path.params = { lang: langPath.params.lang, ...path.params };
 		});
 	});
 
-	return paths as unknown as T;
+	return basePaths;
 }

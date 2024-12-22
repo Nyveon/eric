@@ -1,10 +1,9 @@
 ---
 import BlogPost from "@components/BlogPost.astro";
-import { perLocaleStaticPaths } from "@i18n/utils";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
 	const allPosts = await getCollection("blog");
 
 	const uniqueTags = [
@@ -13,13 +12,15 @@ export async function getStaticPaths() {
 
 	const paths = uniqueTags.map((tag) => {
 		return {
-			params: { tag },
+			params: { tag, lang: undefined },
 			props: { posts: allPosts.filter((post) => post.data.tags.includes(tag)) },
 		};
 	});
 
-	return perLocaleStaticPaths<typeof paths>(paths);
-}
+	// todo: per-locale tags
+
+	return paths;
+};
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
