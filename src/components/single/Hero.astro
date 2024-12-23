@@ -1,0 +1,107 @@
+---
+import Contact from "@components/Contact.astro";
+---
+
+<style>
+	#hero {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		height: 100svh;
+		width: 100%;
+
+		background: linear-gradient(0deg, var(--c-dark) 0%, var(--c-light) 100%);
+
+		text-align: center;
+	}
+
+	#nameplate {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		width: 14rem;
+		height: 14rem;
+		border-radius: 0.25rem;
+
+		background-color: var(--c-dark);
+	}
+
+	#nametag {
+		font-weight: 100;
+		font-size: 3rem;
+		cursor: default;
+	}
+</style>
+
+<div id="hero">
+	<li id="nameplate">
+		<h1 id="nametag" data-detail="Eric K.">Eric K.</h1>
+
+		<Contact />
+	</li>
+</div>
+
+<script>
+	const nameplate = document.getElementById("nameplate")!;
+	const nametag = document.getElementById("nametag")!;
+	let interval: number = -1;
+	const letters = "abcdefghijklmnopqrstuvwxyz";
+
+	nameplate.addEventListener("flipName", (e: CustomEventInit<string>) => {
+		let targetText = e.detail;
+
+		if (!targetText) {
+			targetText = nametag.dataset.detail!;
+		}
+
+		if (targetText === nametag.innerText) {
+			return;
+		}
+
+		if (targetText.length > nametag.innerText.length) {
+			const difference = (targetText.length - nametag.innerText.length) / 2;
+			const goal = nametag.innerText.length + difference;
+			nametag.innerText = nametag.innerText.padStart(goal, ".");
+			nametag.innerText = nametag.innerText.padEnd(targetText.length, ".");
+		}
+
+		let iteration = 0;
+		clearInterval(interval);
+
+		interval = setInterval(() => {
+			nametag.innerText = nametag.innerText
+				.split("")
+				.map((_, index) => {
+					if (!targetText[index]) {
+						return "";
+					}
+
+					if (index < iteration) {
+						return targetText[index];
+					}
+
+					const returnLetter =
+						letters[Math.floor(Math.random() * letters.length)]!;
+
+					if (
+						targetText[index] &&
+						targetText[index] == targetText[index].toUpperCase()
+					) {
+						return returnLetter.toUpperCase();
+					}
+					return returnLetter;
+				})
+				.join("");
+
+			if (iteration >= targetText.length) {
+				clearInterval(interval);
+				iteration = 0;
+			} else {
+				iteration += 0.5;
+			}
+		}, 15);
+	});
+</script>

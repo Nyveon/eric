@@ -12,10 +12,12 @@
         "@astrojs/check": "^0.9.4",
         "@astrojs/rss": "^4.0.10",
         "astro": "^5.1.1",
+        "astro-icon": "^1.1.4",
         "sass": "^1.81.0",
         "typescript": "^5.7.2"
     },
     "devDependencies": {
+        "prettier": "^3.4.2",
         "rollup-plugin-visualizer": "^5.12.0"
     }
 }
