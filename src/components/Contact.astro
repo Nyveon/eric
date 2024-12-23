@@ -48,7 +48,9 @@ const iconSize = "2rem";
 </ul>
 
 <script>
-	const flippers = [...document.querySelectorAll("[data-detail]")];
+	const flippers = document.querySelectorAll(
+		"[data-detail]"
+	) as NodeListOf<HTMLElement>;
 
 	flippers.forEach((flipper) => {
 		flipper.addEventListener("mouseenter", () => {
@@ -68,11 +70,4 @@ const iconSize = "2rem";
 			});
 		});
 	});
-
-	// contactGithub.addEventListener("mouseenter", () => {
-	// 	console.log("here");
-	// 	contactGithub.dispatchEvent(
-	// 		new CustomEvent("flipName", { bubbles: true, detail: "Nyveon" })
-	// 	);
-	// });
 </script>

@@ -1,11 +1,9 @@
 ---
-import Hero from "@components/single/Hero.astro";
-import { useLocalization } from "@i18n/utils";
+import Hero from "@components/Hero.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 export { getStaticPaths } from "@i18n/utils";
-const { t } = useLocalization(Astro.currentLocale);
 ---
 
-<BaseLayout pageTitle={t.pages.home}>
+<BaseLayout pageTitle={"Eric K."}>
 	<Hero />
 </BaseLayout>

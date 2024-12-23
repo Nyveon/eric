@@ -16,7 +16,7 @@ const localizations = {
 			blog: "Blog",
 		},
 		home: {
-			subtitle: "¡Hello World!",
+			subtitle: "Hello World!",
 		},
 		e404: {
 			title: "Page Not Found",
