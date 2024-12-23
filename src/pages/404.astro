@@ -1,0 +1,9 @@
+---
+import { useLocalization } from "@i18n/utils";
+import BaseLayout from "@layouts/BaseLayout.astro";
+const { t } = useLocalization(Astro.currentLocale);
+---
+
+<BaseLayout pageTitle={t.e404.title}>
+	<h2>404 - {t.e404.text}</h2>
+</BaseLayout>
