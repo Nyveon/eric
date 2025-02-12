@@ -2,14 +2,7 @@
 	--c-dark: #0c0015;
 	--c-light: #f5ffff;
 	--c-dim: #a998a5;
-    --c-primary: #bc47eb;
-}
-
-html {
-	-moz-text-size-adjust: none;
-	-webkit-text-size-adjust: none;
-	text-size-adjust: none;
-	font-family: "Lato";
+	--c-primary: #bc47eb;
 }
 
 body {
@@ -18,15 +11,13 @@ body {
 	align-items: center;
 	justify-content: center;
 
-	margin: 0;
-	padding: 0;
 	min-height: 100vh;
 	width: 100%;
 
-	line-height: 1.5;
-
 	color: var(--c-light);
 	background-color: var(--c-dark);
+
+	font-family: "Lato";
 }
 
 main {
@@ -34,40 +25,9 @@ main {
 	width: 100%;
 }
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-	line-height: 1.1;
-}
-
-h1,
-h2,
-h3,
-h4 {
-	text-wrap: balance;
-}
-
 a:not([class]) {
 	text-decoration-skip-ink: auto;
 	color: currentColor;
-}
-
-input,
-button,
-textarea,
-select {
-	font-family: inherit;
-	font-size: inherit;
 }
 
 [data-icon] {

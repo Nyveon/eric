@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const { navbarHeight } = Astro.props;
 ---
 
@@ -34,6 +36,12 @@ const { navbarHeight } = Astro.props;
 	a:hover {
 		color: greenyellow;
 	}
+
+	@media screen and (min-width: 646px) {
+		.hamburger {
+			display: none;
+		}
+	}
 </style>
 
 <nav>
@@ -43,4 +51,13 @@ const { navbarHeight } = Astro.props;
 		<li><a href="#experience">Experience</a></li>
 		<li><a href="#blog">Blog</a></li>
 	</menu>
+	<button class="hamburger">
+		<Icon name="menu" />
+	</button>
 </nav>
+
+<script>
+	// import { $ } from "astro:scoped";
+
+	// $("menu")
+</script>
