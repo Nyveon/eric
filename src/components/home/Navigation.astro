@@ -7,19 +7,29 @@ const { navbarHeight } = Astro.props;
 <style define:vars={{ navbarHeight }}>
 	nav {
 		position: fixed;
+		z-index: 1000;
+		display: flex;
+		justify-content: center;
+
 		width: 100vw;
 		height: var(--navbarHeight);
 		top: 0;
 		padding-block: 1rem;
 
-		mix-blend-mode: difference;
+		background-color: var(--c-dark-t);
+		color: white;
+		backdrop-filter: blur(16px);
 	}
 
 	menu {
-		margin: 0;
 		display: flex;
+		flex-grow: 1;
 		justify-content: space-around;
+		margin: 0;
+		padding: 0;
 		list-style: none;
+
+		max-width: 100ch;
 	}
 
 	li {
@@ -30,15 +40,66 @@ const { navbarHeight } = Astro.props;
 
 	a {
 		text-decoration: none;
-		color: var(--c-light);
 	}
 
 	a:hover {
-		color: greenyellow;
+		color: var(--c-primary);
 	}
 
-	@media screen and (min-width: 646px) {
+	.hamburger {
+		display: none;
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		background-color: transparent;
+		border: none;
+		color: var(--c-light);
+
+		cursor: pointer;
+	}
+
+	.hamburger [data-icon] {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	@media screen and (max-width: 500px) {
+		nav {
+			padding: 0;
+			background-color: transparent;
+			backdrop-filter: none;
+		}
+
+		nav:has(.open) {
+			mix-blend-mode: normal;
+		}
+
 		.hamburger {
+			display: block;
+		}
+
+		.hamburger.open .icon-open {
+			display: none;
+		}
+
+		.hamburger:not(.open) .icon-close {
+			display: none;
+		}
+
+		menu {
+			padding-block: 0.5rem;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.5rem;
+			background: radial-gradient(
+				circle at top 1rem right 2rem,
+				var(--c-dim),
+				var(--c-dark)
+			);
+			border-bottom: 1px solid var(--c-dark-2);
+		}
+
+		menu:not(.open) {
 			display: none;
 		}
 	}
@@ -52,12 +113,20 @@ const { navbarHeight } = Astro.props;
 		<li><a href="#blog">Blog</a></li>
 	</menu>
 	<button class="hamburger">
-		<Icon name="menu" />
+		<Icon class="icon-open" name="menu" />
+		<Icon class="icon-close" name="x-square" />
 	</button>
 </nav>
 
 <script>
-	// import { $ } from "astro:scoped";
+	import { $ } from "astro:scoped";
 
-	// $("menu")
+	const hamburger = $(".hamburger");
+
+	hamburger.addEventListener("click", () => {
+		$("menu").classList.toggle("open");
+		hamburger.classList.toggle("open");
+	});
+
+	//todo: navigating should close hamburger
 </script>

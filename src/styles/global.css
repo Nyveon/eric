@@ -1,8 +1,12 @@
 :root {
 	--c-dark: #0c0015;
-	--c-light: #f5ffff;
+	--c-dark-t: #0c0015e6;
+	--c-dark-2: #908272;
+	--c-light: #e3fbe5;
+	--c-light-2: #eeffe7;
 	--c-dim: #a998a5;
 	--c-primary: #bc47eb;
+	--c-secondary: #ff7f11;
 }
 
 body {
