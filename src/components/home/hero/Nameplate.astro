@@ -29,7 +29,7 @@ import Flipper from "@components/home/hero/Flipper.astro";
 	#nametag {
 		font-weight: 100;
 		font-size: 3rem;
-		cursor: default;
+		/* cursor: default; */
 	}
 </style>
 
@@ -118,5 +118,9 @@ import Flipper from "@components/home/hero/Flipper.astro";
 				iteration += 0.5;
 			}
 		}, 15);
+	});
+
+	nameplate.addEventListener("mouseleave", () => {
+		nameplate.dispatchEvent(new CustomEvent("flipName"));
 	});
 </script>

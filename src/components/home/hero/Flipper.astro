@@ -45,14 +45,6 @@ const iconSize = "2rem";
 
 		flipper.addEventListener("mouseover", activate);
 		flipper.addEventListener("focus", activate);
-		flipper.addEventListener("touchstart", activate);
-
-		flipper.addEventListener("mouseleave", () => {
-			flipper.dispatchEvent(
-				new CustomEvent("flipName", {
-					bubbles: true,
-				})
-			);
-		});
+		flipper.addEventListener("touchstart", activate, { passive: true });
 	});
 </script>
