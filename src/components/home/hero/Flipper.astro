@@ -31,9 +31,9 @@ const iconSize = "2rem";
 </li>
 
 <script>
-	import { $ } from "astro:scoped";
+	import { $each } from "astro:scoped";
 
-	$("li").forEach((flipper) => {
+	$each("li", (flipper) => {
 		const activate = () => {
 			flipper.dispatchEvent(
 				new CustomEvent("flipName", {

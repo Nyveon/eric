@@ -69,8 +69,17 @@ export default function hfga(_: Partial<Options> = {}): AstroIntegration {
 									});
 
 									return `
-export function $(selector = "") {
+export function $all(selector) {
     return document.querySelectorAll(selector + "[data-astro-cid-${result.scope}]");
+}
+
+export function $each(selector, callback) {
+    const elements = $all(selector);
+    elements.forEach(callback);
+}
+
+export function $(selector) {
+    return document.querySelector(selector + "[data-astro-cid-${result.scope}]");
 }
 `;
 								},

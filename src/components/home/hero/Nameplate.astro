@@ -13,7 +13,7 @@ import Flipper from "@components/home/hero/Flipper.astro";
 		margin: 0;
 	}
 
-	#nameplate {
+	.nameplate {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -26,15 +26,15 @@ import Flipper from "@components/home/hero/Flipper.astro";
 		background-color: var(--c-dark);
 	}
 
-	#nametag {
+	.nametag {
 		font-weight: 100;
 		font-size: 3rem;
-		/* cursor: default; */
+		cursor: default;
 	}
 </style>
 
-<div id="nameplate">
-	<h1 id="nametag" data-detail="Eric K.">Eric K.</h1>
+<div class="nameplate">
+	<h1 class="nametag" data-detail="Eric K.">Eric K.</h1>
 
 	<ul>
 		<Flipper
@@ -59,8 +59,10 @@ import Flipper from "@components/home/hero/Flipper.astro";
 </div>
 
 <script>
-	const nameplate = document.getElementById("nameplate")!;
-	const nametag = document.getElementById("nametag")!;
+	import { $ } from "astro:scoped";
+
+	const nameplate = $(".nameplate");
+	const nametag = $(".nametag");
 	let interval: ReturnType<typeof setInterval>;
 	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 
