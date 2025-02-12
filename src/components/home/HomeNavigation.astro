@@ -1,0 +1,46 @@
+---
+const { navbarHeight } = Astro.props;
+---
+
+<style define:vars={{ navbarHeight }}>
+	nav {
+		position: fixed;
+		width: 100vw;
+		height: var(--navbarHeight);
+		top: 0;
+		padding-block: 1rem;
+
+		mix-blend-mode: difference;
+	}
+
+	menu {
+		margin: 0;
+		display: flex;
+		justify-content: space-around;
+		list-style: none;
+	}
+
+	li {
+		font-size: 1.5rem;
+		font-weight: 300;
+		text-transform: uppercase;
+	}
+
+	a {
+		text-decoration: none;
+		color: var(--c-light);
+	}
+
+	a:hover {
+		color: greenyellow;
+	}
+</style>
+
+<nav>
+	<menu>
+		<li><a href="#about">About</a></li>
+		<li><a href="#projects">Projects</a></li>
+		<li><a href="#experience">Experience</a></li>
+		<li><a href="#blog">Blog</a></li>
+	</menu>
+</nav>

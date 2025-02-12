@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	title: string;
+	detail: string;
+	icon: string;
+	link: string;
+}
+
+const { title, detail, icon, link } = Astro.props;
+
+const iconSize = "2rem";
+---
+
+<style>
+	[data-icon] {
+		color: var(--c-dim);
+		transition: color 0.2s;
+	}
+
+	[data-detail]:hover [data-icon] {
+		color: var(--c-light);
+	}
+</style>
+
+<li data-detail={detail}>
+	<a href={link} title={title} target="_blank">
+		<Icon name={icon} size={iconSize} />
+	</a>
+</li>
+
+<script>
+	import { $ } from "astro:scoped";
+
+	$("li").forEach((flipper) => {
+		const activate = () => {
+			flipper.dispatchEvent(
+				new CustomEvent("flipName", {
+					bubbles: true,
+					detail: flipper.dataset.detail,
+				})
+			);
+		};
+
+		flipper.addEventListener("mouseover", activate);
+		flipper.addEventListener("focus", activate);
+		flipper.addEventListener("touchstart", activate);
+
+		flipper.addEventListener("mouseleave", () => {
+			flipper.dispatchEvent(
+				new CustomEvent("flipName", {
+					bubbles: true,
+				})
+			);
+		});
+	});
+</script>

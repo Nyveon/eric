@@ -1,19 +1,16 @@
 ---
-import Contact from "@components/Contact.astro";
+import Flipper from "@components/home/hero/Flipper.astro";
 ---
 
 <style>
-	#hero {
+	ul {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		gap: 1rem;
 
-		height: 100svh;
-		width: 100%;
-
-		background: linear-gradient(0deg, var(--c-dark) 0%, var(--c-light) 100%);
-
-		text-align: center;
+		list-style: none;
+		padding: 0;
+		margin: 0;
 	}
 
 	#nameplate {
@@ -36,12 +33,29 @@ import Contact from "@components/Contact.astro";
 	}
 </style>
 
-<div id="hero">
-	<div id="nameplate">
-		<h1 id="nametag" data-detail="Eric K.">Eric K.</h1>
+<div id="nameplate">
+	<h1 id="nametag" data-detail="Eric K.">Eric K.</h1>
 
-		<Contact />
-	</div>
+	<ul>
+		<Flipper
+			title="Github"
+			detail="Nyveon"
+			icon="github"
+			link="https://github.com/Nyveon"
+		/>
+		<Flipper
+			title="Email"
+			detail="a@eri.cl"
+			icon="mail"
+			link="mailto:a@eri.cl"
+		/>
+		<Flipper
+			title="LinkedIn"
+			detail="@erictc"
+			icon="linkedin"
+			link="https://www.linkedin.com/in/erictc/"
+		/>
+	</ul>
 </div>
 
 <script>

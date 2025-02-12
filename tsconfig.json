@@ -1,25 +1,24 @@
 {
-  "extends": "astro/tsconfigs/strictest",
-  "include": [
-    ".astro/types.d.ts",
-    "**/*",
-    "src"
-, ".old/astrolearn/rss.xml.ts"  ],
-  "exclude": [
-    "dist",
-    "node_modules"
-  ],
-  "compilerOptions": {
-    "target": "ESNext",
-    "baseUrl": ".",
-    "paths": {
-        "@components/*": ["src/components/*"],
-        "@layouts/*": ["src/layouts/*"],
-        "@pages/*": ["src/pages/*"],
-        "@assets/*": ["src/assets/*"],
-        "@i18n/*": ["src/i18n/*"],
-        "@styles/*": ["src/styles/*"]
-    },
-    "verbatimModuleSyntax": true,
-  }
+	"extends": "astro/tsconfigs/strictest",
+	"include": [
+		".astro/types.d.ts",
+		"**/*",
+		"src",
+		".old/astrolearn/rss.xml.ts",
+		"astro.config.mjs"
+	],
+	"exclude": ["dist", "node_modules"],
+	"compilerOptions": {
+		"target": "ESNext",
+		"baseUrl": ".",
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@layouts/*": ["src/layouts/*"],
+			"@pages/*": ["src/pages/*"],
+			"@assets/*": ["src/assets/*"],
+			"@i18n/*": ["src/i18n/*"],
+			"@styles/*": ["src/styles/*"]
+		},
+		"verbatimModuleSyntax": true
+	}
 }

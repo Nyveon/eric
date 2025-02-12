@@ -35,7 +35,7 @@ short paragraph, maybe picture
 
 - MCStructureCleaner
 - Gaussian Splats 3D Maps
-- Ofisalitbot?
+- Ofisalitabot?
 
 #### Uni
 
