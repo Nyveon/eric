@@ -1,9 +1,34 @@
 ---
-import Hero from "@components/Hero.astro";
+import Hero from "@components/home/hero/Hero.astro";
+import HomeNavigation from "@components/home/HomeNavigation.astro";
+import Projects from "@components/home/Projects.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 export { getStaticPaths } from "@i18n/utils";
+
+const navbarHeight = "4rem";
 ---
+
+<style define:vars={{ navbarHeight }}>
+	.placeholder {
+		height: 100vh;
+	}
+
+	section {
+		scroll-margin-top: var(--navbarHeight);
+	}
+</style>
+
+<HomeNavigation slot="header" navbarHeight={navbarHeight} />
 
 <BaseLayout pageTitle={"Eric K."}>
 	<Hero />
+
+	<div class="placeholder" id="about">About: lorem ipsum etc</div>
+
+	<section id="projects">
+		<Projects />
+	</section>
+
+	<div class="placeholder" id="experience">Experience: lorem ipsum etc</div>
+	<div class="placeholder" id="blog">Blog: lorem ipsum etc</div>
 </BaseLayout>
