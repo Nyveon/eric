@@ -12,7 +12,7 @@ const { navbarHeight } = Astro.props;
 		justify-content: center;
 
 		width: 100vw;
-		height: var(--navbarHeight);
+		min-height: var(--navbarHeight);
 		top: 0;
 		padding-block: 1rem;
 
@@ -53,7 +53,7 @@ const { navbarHeight } = Astro.props;
 		right: 1rem;
 		background-color: transparent;
 		border: none;
-		color: var(--c-light);
+		color: var(--c-dark-t);
 
 		cursor: pointer;
 	}
@@ -94,7 +94,7 @@ const { navbarHeight } = Astro.props;
 			background: radial-gradient(
 				circle at top 1rem right 2rem,
 				var(--c-dim),
-				var(--c-dark)
+				var(--c-dark-t)
 			);
 			border-bottom: 1px solid var(--c-dark-2);
 		}

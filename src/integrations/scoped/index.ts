@@ -58,8 +58,6 @@ export default function hfga(_: Partial<Options> = {}): AstroIntegration {
 										-".doesnotendwithastrodontprocessthispls".length
 									);
 
-									console.log(compile);
-
 									const result = await compile({
 										astroConfig,
 										viteConfig,

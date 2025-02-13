@@ -1,9 +1,11 @@
 ---
+import Boids from "@components/experimental/Boids.astro";
 import Nameplate from "@components/home/hero/Nameplate.astro";
 ---
 
 <style>
 	#hero {
+		position: relative;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -20,5 +22,6 @@ import Nameplate from "@components/home/hero/Nameplate.astro";
 </style>
 
 <div id="hero">
+	<Boids />
 	<Nameplate />
 </div>

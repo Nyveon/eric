@@ -13,6 +13,8 @@
         "@astrojs/rss": "^4.0.11",
         "astro": "^5.2.6",
         "astro-icon": "^1.1.4",
+        "bitecs": "github:NateTheGreatt/bitECS#rc-0-4-0",
+        "pixi.js": "^8.8.0",
         "sass": "^1.81.0",
         "typescript": "^5.7.2"
     },

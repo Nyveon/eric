@@ -18,8 +18,8 @@ body {
 	min-height: 100vh;
 	width: 100%;
 
-	color: var(--c-light);
-	background-color: var(--c-dark);
+	color: var(--c-dark);
+	background-color: var(--c-light);
 
 	font-family: "Lato";
 }
