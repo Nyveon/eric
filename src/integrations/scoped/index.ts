@@ -1,4 +1,5 @@
 // Modified version of: https://github.com/lilnasy/gratelets/tree/main/packages/scope
+// Consider adding this in: https://gist.github.com/NicoToff/662361350702035dd2b39c2c28dd3603
 
 import fs from "node:fs";
 // @ts-ignore

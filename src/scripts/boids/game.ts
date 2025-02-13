@@ -20,7 +20,7 @@ export const world = createWorld({
 			y: new Float32Array(MAX_ENTITIES),
 		},
 		Rotation: {
-			angle: new Float32Array(MAX_ENTITIES),
+			angle: new Float32Array(MAX_ENTITIES), //radians
 		},
 		GameSprite: {
 			sprite: [] as Sprite[],
@@ -44,7 +44,7 @@ const { Position, Rotation, GameSprite, Velocity, Acceleration } =
 //todo: optimization: these can probably be collapsed into a single loop
 const movementSystem = (world: GameWorld) => {
 	query(world, [Position, GameSprite]).forEach((eid) => {
-		//wrap
+		// Wrap
 		if (Position.x[eid]! > world.bounds.width) {
 			Position.x[eid] = 0;
 		}
@@ -58,6 +58,7 @@ const movementSystem = (world: GameWorld) => {
 			Position.y[eid] = world.bounds.height;
 		}
 
+		// Position
 		GameSprite.sprite[eid]!.x = Position.x[eid]!;
 		GameSprite.sprite[eid]!.y = Position.y[eid]!;
 	});
@@ -152,7 +153,7 @@ const steeringSystem = (world: GameWorld) => {
 
 		Acceleration.x[eid] = accel.x;
 		Acceleration.y[eid] = accel.y;
-		Rotation.angle[eid] = Math.atan2(Velocity.y[eid]!, Velocity.x[eid]!) + 90;
+		Rotation.angle[eid] = Math.atan2(Velocity.y[eid]!, Velocity.x[eid]!);
 
 		vel.limit(MAX_SPEED);
 		Velocity.x[eid] = vel.x;

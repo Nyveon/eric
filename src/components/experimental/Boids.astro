@@ -12,6 +12,7 @@
 	import { $ } from "astro:scoped";
 	import { addComponent, addEntity, IsA } from "bitecs";
 	import { Application, Assets, Sprite } from "pixi.js";
+	import preyBoid from "@assets/triangle.png";
 
 	const view = $("canvas") as HTMLCanvasElement;
 	const PADDING = 32;
@@ -24,7 +25,7 @@
 			canvas: view,
 		});
 
-		const texture = await Assets.load("https://pixijs.com/assets/bunny.png");
+		const texture = await Assets.load(preyBoid);
 
 		const { Position, GameSprite, Velocity } = world.components;
 
