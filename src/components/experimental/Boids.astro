@@ -7,12 +7,14 @@
 <canvas></canvas>
 
 <script>
+	import { Boid } from "@scripts/boids/boid";
 	import { world, step } from "@scripts/boids/game";
 	import { $ } from "astro:scoped";
-	import { addComponent, addEntity } from "bitecs";
+	import { addComponent, addEntity, IsA } from "bitecs";
 	import { Application, Assets, Sprite } from "pixi.js";
 
 	const view = $("canvas") as HTMLCanvasElement;
+	const PADDING = 32;
 
 	(async () => {
 		const app = new Application();
@@ -23,20 +25,37 @@
 		});
 
 		const texture = await Assets.load("https://pixijs.com/assets/bunny.png");
-		const bunny = new Sprite(texture);
-		bunny.anchor.set(0.5);
-		app.stage.addChild(bunny);
 
-		const { Position, Rotation, GameSprite } = world.components;
+		const { Position, GameSprite, Velocity } = world.components;
 
-		const entity = addEntity(world);
-		addComponent(world, entity, Position);
-		Position.x[entity] = app.screen.width / 2;
-		Position.y[entity] = app.screen.height / 2;
-		addComponent(world, entity, Rotation);
-		Rotation.angle[entity] = 0;
-		addComponent(world, entity, GameSprite);
-		GameSprite.sprite[entity] = bunny;
+		for (let i = 0; i < 600; i++) {
+			const entity = addEntity(world);
+			addComponent(world, entity, IsA(Boid));
+			Position.x[entity] = Math.random() * app.screen.width;
+			Position.y[entity] = Math.random() * app.screen.height;
+			const bunny = new Sprite(texture);
+			bunny.anchor.set(0.5);
+			app.stage.addChild(bunny);
+			GameSprite.sprite[entity] = bunny;
+			Velocity.x[entity] = Math.random() * 10 - 5;
+			Velocity.y[entity] = Math.random() * 10 - 5;
+		}
+
+		// setBounds(
+		// 	new Rectangle(
+		// 		-PADDING,
+		// 		-PADDING,
+		// 		app.screen.width + 2 * PADDING,
+		// 		app.screen.height + 2 * PADDING
+		// 	)
+		// );
+
+		world.bounds = {
+			x: -PADDING,
+			y: -PADDING,
+			width: app.screen.width + 2 * PADDING,
+			height: app.screen.height + 2 * PADDING,
+		};
 
 		app.ticker.add((time) => {
 			step(time.deltaTime);
