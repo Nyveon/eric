@@ -1,30 +1,21 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
-import scoped from "./src/integrations/scoped";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://eric.tc",
-
-	vite: {
-		css: {
-			preprocessorOptions: {
-				scss: {
-					api: "modern-compiler",
-				},
-			},
-		},
-	},
-
-	experimental: {
-		contentIntellisense: true,
-	},
-
-	i18n: {
-		locales: ["en", "es"],
-		defaultLocale: "en",
-	},
-
-	integrations: [icon(), scoped()],
+    site: "https://eric.tc/",
+    vite: {
+        plugins: [tailwindcss()],
+    },
+    integrations: [icon()],
+    fonts: [
+        {
+            provider: fontProviders.fontsource(),
+            name: "Geist",
+            cssVariable: "--font-x",
+            weights: ["100", "400", "700"],
+        },
+    ],
 });

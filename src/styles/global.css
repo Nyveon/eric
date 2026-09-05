@@ -1,39 +1,27 @@
-:root {
-	--c-dark: #0c0015;
-	--c-dark-t: #0c0015e6;
-	--c-dark-2: #908272;
-	--c-light: #e3fbe5;
-	--c-light-2: #eeffe7;
-	--c-dim: #a998a5;
-	--c-primary: #bc47eb;
-	--c-secondary: #ff7f11;
+@import "tailwindcss";
+
+@theme inline {
+    --font-sans: var(--font-x);
 }
 
-body {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+@layer utilities {
+    html {
+        color-scheme: light;
+    }
 
-	min-height: 100vh;
-	width: 100%;
+    html,
+    body {
+        @apply size-full;
+    }
 
-	color: var(--c-dark);
-	background-color: var(--c-light);
+    body {
+        @apply font-sans antialiased;
+        @apply flex flex-col;
+        @apply bg-neutral-100 dark:bg-neutral-900;
+        @apply text-black/75 dark:text-white/75;
+    }
 
-	font-family: "Lato";
-}
-
-main {
-	flex-grow: 1;
-	width: 100%;
-}
-
-a:not([class]) {
-	text-decoration-skip-ink: auto;
-	color: currentColor;
-}
-
-[data-icon] {
-	vertical-align: -0.125em;
+    main {
+        @apply flex-1 py-32;
+    }
 }

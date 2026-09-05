@@ -1,0 +1,64 @@
+---
+import { Icon } from "astro-icon/components";
+
+const iconSize = "2rem";
+---
+
+<ul class="flex justify-center gap-3">
+    <li data-detail="Nyveon">
+        <a href="https://github.com/Nyveon" title="Github" target="_blank">
+            <Icon
+                name="github"
+                size={iconSize}
+                class="hover:text-emerald-200 transition-colors"
+            />
+        </a>
+    </li>
+    <li data-detail="a@eri.cl">
+        <a href="mailto:a@eri.cl" title="Email">
+            <Icon
+                name="mail"
+                size={iconSize}
+                class="hover:text-pink-300 transition-colors"
+            />
+        </a>
+    </li>
+    <li data-detail="@erictc">
+        <a
+            href="https://www.linkedin.com/in/erictc/"
+            title="LinkedIn"
+            target="_blank"
+        >
+            <Icon
+                name="linkedin"
+                size={iconSize}
+                class="hover:text-cyan-200 transition-colors"
+            />
+        </a>
+    </li>
+</ul>
+
+<script>
+    const flippers = document.querySelectorAll(
+        "[data-detail]",
+    ) as NodeListOf<HTMLElement>;
+
+    flippers.forEach((flipper) => {
+        flipper.addEventListener("mouseenter", () => {
+            flipper.dispatchEvent(
+                new CustomEvent("flipName", {
+                    bubbles: true,
+                    detail: flipper.dataset.detail,
+                }),
+            );
+
+            flipper.addEventListener("mouseleave", () => {
+                flipper.dispatchEvent(
+                    new CustomEvent("flipName", {
+                        bubbles: true,
+                    }),
+                );
+            });
+        });
+    });
+</script>

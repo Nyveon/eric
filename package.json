@@ -1,25 +1,25 @@
 {
-    "name": "erictc",
+    "name": "blog",
     "type": "module",
     "version": "0.0.1",
+    "engines": {
+        "node": ">=26.8.1"
+    },
     "scripts": {
-        "dev": "astro dev --host",
-        "build": "astro check && astro build",
+        "dev": "astro dev",
+        "build": "astro build",
         "preview": "astro preview",
         "astro": "astro"
     },
     "dependencies": {
-        "@astrojs/check": "^0.9.4",
-        "@astrojs/rss": "^4.0.11",
-        "astro": "^5.2.6",
-        "astro-icon": "^1.1.4",
-        "bitecs": "github:NateTheGreatt/bitECS#rc-0-4-0",
-        "pixi.js": "^8.8.0",
-        "sass": "^1.81.0",
-        "typescript": "^5.7.2"
+        "@astrojs/check": "^0.9.10",
+        "@tailwindcss/vite": "^4.3.3",
+        "astro": "^7.3.1",
+        "astro-icon": "^1.2.0",
+        "tailwindcss": "^4.3.3",
+        "typescript": "^7.0.2"
     },
-    "devDependencies": {
-        "prettier": "^3.4.2",
-        "rollup-plugin-visualizer": "^5.12.0"
+    "allowScripts": {
+        "esbuild": true
     }
 }
