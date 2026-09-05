@@ -10,3 +10,8 @@
 | `pnpm dev`     | Starts local dev server at `localhost:4321`  |
 | `pnpm build`   | Build your production site to `./dist/`      |
 | `pnpm preview` | Preview your build locally, before deploying |
+
+## Credits
+
+- Background: https://www.transparenttextures.com/wavecut.html
+- Reference code: https://github.com/trevortylerlee/astro-micro
