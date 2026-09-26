@@ -1,0 +1,73 @@
+<cube-background aria-hidden="true">
+    <canvas></canvas>
+</cube-background>
+
+<style>
+    cube-background {
+        position: fixed;
+        inset: 0;
+        display: block;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+        background: #171717;
+    }
+
+    cube-background::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("../../assets/cubes.png");
+        opacity: 0.035;
+    }
+
+    cube-background[data-renderer="pixi"]::before {
+        display: none;
+    }
+
+    canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    class CubeBackground extends HTMLElement {
+        private controller?: AbortController;
+
+        connectedCallback() {
+            this.controller?.abort();
+            const controller = new AbortController();
+            this.controller = controller;
+
+            void import("@/scripts/cube-background")
+                .then(async ({ startCubeBackground }) => {
+                    if (controller.signal.aborted) return;
+                    await startCubeBackground(
+                        this.querySelector("canvas")!,
+                        controller.signal,
+                    );
+                    if (!controller.signal.aborted)
+                        this.dataset.renderer = "pixi";
+                })
+                .catch((error: unknown) => {
+                    if (controller.signal.aborted) return;
+                    this.dataset.renderer = "unavailable";
+                    console.warn(
+                        "Cube background: using the static texture.",
+                        error,
+                    );
+                });
+        }
+
+        disconnectedCallback() {
+            this.controller?.abort();
+            delete this.dataset.renderer;
+        }
+    }
+
+    if (!customElements.get("cube-background")) {
+        customElements.define("cube-background", CubeBackground);
+    }
+</script>

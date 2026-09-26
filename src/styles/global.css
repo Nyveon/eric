@@ -27,6 +27,16 @@
         @apply flex-1 py-32;
     }
 
+    body.animated-background {
+        background-image: none;
+        isolation: isolate;
+    }
+
+    .animated-background > main {
+        position: relative;
+        z-index: 1;
+    }
+
     article {
         @apply prose prose-neutral max-w-full prose-invert prose-img:mx-auto prose-img:my-auto;
         @apply prose-headings:font-semibold;

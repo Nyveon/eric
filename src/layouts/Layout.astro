@@ -1,13 +1,15 @@
 ---
 import Head from "@/components/base/Head.astro";
 import AnimatedFavicon from "@/components/base/AnimatedFavicon.astro";
+import CubeBackground from "@/components/landing/CubeBackground.astro";
 
 interface Props {
     title?: string;
     description?: string;
+    animatedBackground?: boolean;
 }
 
-const { title = "Eric K.", description = "My personal site" } = Astro.props;
+const { title = "Eric K.", description = "My personal site", animatedBackground = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,7 +17,8 @@ const { title = "Eric K.", description = "My personal site" } = Astro.props;
     <head>
         <Head title={title} description={description} />
     </head>
-    <body>
+    <body class:list={[{ "animated-background": animatedBackground }]}>
+        {animatedBackground && <CubeBackground />}
         <!-- <Header /> -->
         <main>
             <slot />
