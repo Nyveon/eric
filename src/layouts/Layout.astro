@@ -1,0 +1,31 @@
+---
+import Head from "@/components/base/Head.astro";
+import AnimatedFavicon from "@/components/base/AnimatedFavicon.astro";
+import CubeBackground from "@/components/landing/CubeBackground.astro";
+
+interface Props {
+    title?: string;
+    description?: string;
+    animatedBackground?: boolean;
+}
+
+const { title = "Eric K.", description = "My personal site", animatedBackground = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <Head title={title} description={description} />
+    </head>
+    <body class:list={[{ "animated-background": animatedBackground }]}>
+        {animatedBackground && <CubeBackground />}
+        <!-- <Header /> -->
+        <main>
+            <slot />
+        </main>
+        <!-- <Footer /> -->
+        <!-- <Pagefind /> -->
+
+        <AnimatedFavicon />
+    </body>
+</html>

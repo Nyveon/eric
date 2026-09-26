@@ -1,7 +1,8 @@
 {
-    "typescript.validate.enable": true,
     "editor.formatOnSave": true,
-    "astro.content-intellisense": true,
-    "liveServer.settings.multiRootWorkspaceName": "eric",
-    "liveServer.settings.port": 5501,
+    "js/ts.experimental.useTsgo": true,
+    "js/ts.tsdk.path": "./node_modules/typescript",
+    "files.associations": {
+        "*.css": "tailwindcss"
+    }
 }

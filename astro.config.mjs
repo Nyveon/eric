@@ -1,38 +1,21 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
-// import { visualizer } from "rollup-plugin-visualizer";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://eric.tc",
-
-  vite: {
-      css: {
-          preprocessorOptions: {
-              scss: {
-                  api: "modern-compiler",
-              },
-          },
-      },
-      plugins: [
-          // visualizer({
-          // 	emitFile: false,
-          // 	filename: "stats.html",
-          // 	open: true,
-          // 	template: "sunburst",
-          // }),
-      ],
-	},
-
-  experimental: {
-      contentIntellisense: true,
-	},
-
-  i18n: {
-      locales: ["en", "es"],
-      defaultLocale: "en",
-	},
-
-  integrations: [icon()],
+    site: "https://eric.tc/",
+    vite: {
+        plugins: [tailwindcss()],
+    },
+    integrations: [icon()],
+    fonts: [
+        {
+            provider: fontProviders.fontsource(),
+            name: "Lato",
+            cssVariable: "--font-x",
+            weights: ["100", "400", "700"],
+        },
+    ],
 });
