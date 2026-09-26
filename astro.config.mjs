@@ -13,7 +13,7 @@ export default defineConfig({
     fonts: [
         {
             provider: fontProviders.fontsource(),
-            name: "Geist",
+            name: "Lato",
             cssVariable: "--font-x",
             weights: ["100", "400", "700"],
         },
